@@ -13,7 +13,7 @@ class App extends React.Component {
         const response = await youtube.get('/search', {
             params: {
                 part: 'snippet',
-                maxResults: 5,
+                maxResults: 10,
                 q: term,
                 type: 'video',
                 key: 'AIzaSyCAXIHesihCdK0eT-eTQntIuMmltvg18RI'
@@ -32,9 +32,9 @@ class App extends React.Component {
             
             <div className="ui container app-container">
                 <SearchBar onSubmitApp={this.onSearchSubmit}/>
-                    
+                    <div className="ui grid">
                         <div className="ui row">
-                            <div className="eleven wide column">
+                            <div className="ten wide column">
                                 <VideoDetail 
                                     video={this.state.selectedVideo}>
                                 </VideoDetail>
@@ -45,7 +45,7 @@ class App extends React.Component {
                                 videoSelect={this.onVideoSelect}></VideoList>
                             </div>
                         </div>
-                    
+                    </div>
             </div>
         )
     }

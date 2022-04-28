@@ -1,3 +1,15 @@
 .app-container {
     margin-top: 15px;
+    
 }
+
+.grid-container {
+    display: grid !important;
+    grid-template-columns: 3fr 1fr !important;
+    grid-gap: 10px;
+}
+
+.grid-column {
+
+}
+

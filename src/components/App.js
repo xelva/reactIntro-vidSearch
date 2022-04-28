@@ -19,32 +19,34 @@ class App extends React.Component {
                 key: 'AIzaSyCAXIHesihCdK0eT-eTQntIuMmltvg18RI'
             }
         }) 
-        this.setState({ selectedVideo: null })
-        this.setState({ videos: response.data.items });
+        this.setState({ videos: response.data.items, selectedVideo: response.data.items[0] });
     }
 
     onVideoSelect = (vid) => {
         const videoId = this.setState( {selectedVideo: vid})
     }
 
+    componentDidMount() {
+        this.onSearchSubmit('nature');
+    }
+
     render() {
         return (
-            
             <div className="ui container app-container">
                 <SearchBar onSubmitApp={this.onSearchSubmit}/>
-                    <div className="ui grid">
-                        <div className="ui row">
-                            <div className="ten wide column">
+                    <div className="grid-container">
+                        
+                            <div className="grid-column">
                                 <VideoDetail 
                                     video={this.state.selectedVideo}>
                                 </VideoDetail>
                             </div>
-                            <div className="five wide column">
+                            <div className="grid-column">
                             <VideoList 
                                 videos={this.state.videos} 
                                 videoSelect={this.onVideoSelect}></VideoList>
                             </div>
-                        </div>
+                        
                     </div>
             </div>
         )
